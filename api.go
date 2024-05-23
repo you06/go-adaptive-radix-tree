@@ -108,6 +108,12 @@ type Tree interface {
 	// Maximum returns the maximum valued leaf, true if leaf is found and nil, false otherwise.
 	Maximum() (max Value, found bool)
 
+	// Minimum returns the key of the minimum valued leaf, true if leaf is found and nil, false otherwise.
+	MinimumKey() (min Key, found bool)
+
+	// Maximum returns the key of the maximum valued leaf, true if leaf is found and nil, false otherwise.
+	MaximumKey() (max Key, found bool)
+
 	// Returns size of the tree
 	Size() int
 }

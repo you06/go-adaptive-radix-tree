@@ -87,6 +87,26 @@ func (t *tree) Maximum() (value Value, found bool) {
 	return leaf.value, true
 }
 
+func (t *tree) MinimumKey() (key Key, found bool) {
+	if t == nil || t.root == nil {
+		return nil, false
+	}
+
+	leaf := t.root.minimum()
+
+	return leaf.key, true
+}
+
+func (t *tree) MaximumKey() (key Key, found bool) {
+	if t == nil || t.root == nil {
+		return nil, false
+	}
+
+	leaf := t.root.maximum()
+
+	return leaf.key, true
+}
+
 func (t *tree) Size() int {
 	if t == nil || t.root == nil {
 		return 0
