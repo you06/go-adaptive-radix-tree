@@ -1,5 +1,7 @@
 package art
 
+import "fmt"
+
 type tree struct {
 	// version field is updated by each tree modification
 	version int
@@ -173,6 +175,9 @@ func (t *tree) recursiveInsert(curNode **artNode, key Key, value Value, depth ui
 		} else {
 			node.prefixLen -= (prefixMismatchIdx + 1)
 			leaf := current.minimum()
+			if leaf == nil {
+				panic(fmt.Sprintf("%d's leaf is nil", current.kind))
+			}
 			newNode.addChild(leaf.key.charAt(int(depth+prefixMismatchIdx)), leaf.key.valid(int(depth+prefixMismatchIdx)), current)
 
 			for i, limit := uint32(0), min(node.prefixLen, MaxPrefixLen); i < limit; i++ {

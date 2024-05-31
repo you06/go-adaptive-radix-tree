@@ -1,7 +1,9 @@
 package art
 
 import (
+	"fmt"
 	"testing"
+	"unsafe"
 
 	//"fmt"
 
@@ -337,4 +339,22 @@ func TestShrink(t *testing.T) {
 		newNode := node.shrink()
 		assert.Equal(t, expected[i], newNode.kind)
 	}
+}
+
+func TestSizeOf(*testing.T) {
+	var (
+		an   artNode
+		n4   node4
+		n16  node16
+		n48  node48
+		n256 node256
+	)
+	fmt.Println("art node", unsafe.Sizeof(an))
+	fmt.Println("node4", unsafe.Sizeof(n4))
+	fmt.Println("node16", unsafe.Sizeof(n16))
+	fmt.Println("node48", unsafe.Sizeof(n48))
+	fmt.Println("node256", unsafe.Sizeof(n256))
+
+	n4t := factory.newNode4()
+	fmt.Println("node4 minimum", n4t.minimum())
 }
